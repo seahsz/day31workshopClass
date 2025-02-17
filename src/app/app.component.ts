@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PaginationEvent } from './models';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'day31workshop';
 
-  currentNumber = 0
+  imgNum = 0
 
-  whenNewNumber($event: number) {
-    this.currentNumber = $event
+  whenNewNumber($event: PaginationEvent) {
+    this.imgNum = $event.value;
   }
 }

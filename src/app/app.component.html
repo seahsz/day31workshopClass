@@ -1,8 +1,8 @@
 <div class="main">
   <h1>Display Numbers</h1>
 
-  <app-number [currNumber]="currentNumber"></app-number>
+  <app-number [currNumber]="imgNum"></app-number>
 
-  <app-pagination (onNewNumber)="whenNewNumber($event)"></app-pagination>
+  <app-pagination (onNewNumber)="whenNewNumber($event)" [currNumber]="imgNum"></app-pagination>
 
 </div>

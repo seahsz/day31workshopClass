@@ -1,5 +1,6 @@
-import { Component, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Subject } from 'rxjs';
+import { PaginationEvent } from '../../models';
 
 @Component({
   selector: 'app-pagination',
@@ -18,14 +19,26 @@ export class PaginationComponent {
   //   ]
   numbers: number[] = Array.from({ length:31 }, (_, i) => i)
 
-  @Output()
-  onNewNumber = new Subject<number>()
+  steps = [1, 2, 3, 4, 5];
 
+  step = 1;
+
+  @Output()
+  onNewNumber = new Subject<PaginationEvent>;
+
+  @Input()
   currNumber = 0
 
   selectNumber($event: any) {
     this.currNumber = parseInt($event.target.value)
-    this.onNewNumber.next(this.currNumber)
+    // this.onNewNumber.next(this.currNumber)
+
+    // Just because we want to try creating our own event (PaginationEvent)
+    const event: PaginationEvent = {
+      value: this.currNumber,
+      step: this.step
+    }
+    this.onNewNumber.next(event);
   }
 
   modifyNumber(delta: number) {
@@ -40,7 +53,18 @@ export class PaginationComponent {
     }
 
     // Output the event to app-root
-    this.onNewNumber.next(this.currNumber)
+    // this.onNewNumber.next(this.currNumber)
+
+      // Just because we want to try creating our own event (PaginationEvent)
+      const event: PaginationEvent = {
+        value: this.currNumber,
+        step: this.step
+      }
+      this.onNewNumber.next(event);
+  }
+
+  stepChange($event : any) {
+    this.step = parseInt($event.target.value);
   }
 
 }

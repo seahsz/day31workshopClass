@@ -1,9 +1,10 @@
 <table>
     <tr>
         <td>
-            <button type="button" (click)="modifyNumber(-1)">Prev</button>
+            <button type="button" (click)="modifyNumber(-step)">Prev</button>
         </td>
         <td>
+            Select page:
             <select (change)="selectNumber($event)" [value]="currNumber">
                 @for (n of numbers; track $index) {
                     <option [value]="n">{{ n }}</option>
@@ -11,7 +12,15 @@
             </select>
         </td>
         <td>
-            <button type="button" (click)="modifyNumber(1)">Next</button>
+            Change step:
+            <select (change)="stepChange($event)">
+                @for (s of steps; track $index) {
+                    <option [value]="s">{{ s }}</option>
+                }
+            </select>
+        </td>
+        <td>
+            <button type="button" (click)="modifyNumber(step)">Next</button>
         </td>
     </tr>
 </table>
