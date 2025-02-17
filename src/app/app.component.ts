@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'day31workshop';
+
+  currentNumber = 0
+
+  whenNewNumber($event: number) {
+    this.currentNumber = $event
+  }
 }

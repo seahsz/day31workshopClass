@@ -1,0 +1,17 @@
+<table>
+    <tr>
+        <td>
+            <button type="button" (click)="modifyNumber(-1)">Prev</button>
+        </td>
+        <td>
+            <select (change)="selectNumber($event)" [value]="currNumber">
+                @for (n of numbers; track $index) {
+                    <option [value]="n">{{ n }}</option>
+                }
+            </select>
+        </td>
+        <td>
+            <button type="button" (click)="modifyNumber(1)">Next</button>
+        </td>
+    </tr>
+</table>
